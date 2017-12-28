@@ -27,11 +27,11 @@ module.exports = {
    */
   deploy: {
     prd: {
-      user: 'joe',
-      host: '182.254.242.31',
+      user: 'okchem',
+      host: '192.168.1.97',
       ref: 'origin/master',
       repo: 'https://github.com/choelea/google-translate-api-try.git',
-      path: '/data/release/google-translate',
+      path: '/home/okchem/google-translate',
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env prd',
     },
   },
