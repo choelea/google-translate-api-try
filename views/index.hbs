@@ -1,0 +1,41 @@
+{{#>mainlayout}} {{#*inline "allContent"}}
+
+<div id="all">
+  <form>
+    <div class="form-group">
+      <label for="comment">To Be Translated:</label>
+      <textarea class="form-control" rows="5" name="tt" id="tt"></textarea>
+    </div>
+    <div class="btn-group btn-group-lg">
+      <button type="button" id="transalte" class="btn btn-primary">Translate</button>
+    </div>
+  </form>
+  <br/>
+  <div class="panel panel-default">
+    <div id="result" class="panel-body"></div>
+  </div>
+</div>
+<!-- /#all -->
+{{/inline}} 
+{{#*inline "jsRef"}}
+{{>jsRef}}
+  <script>
+    $().ready(function(){
+      $("#transalte").bind("click",function(){
+        $.ajax({
+        url: '/translate',
+        type: 'POST',
+        data: {"tt":$("#tt").val()},
+        success: function (res) {
+          console.log(res)
+          $("#result").text(res.text)
+        },
+        error: function (response) {
+          console.log(response)
+        },
+      })
+      })
+    })
+  </script>    
+{{/inline}}
+{{/mainlayout}}
